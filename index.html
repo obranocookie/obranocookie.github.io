@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+	var characters = ["Wario", "Mario", "Luigi", "Peach", "Bowser",
+	                  "Yoshi", "Donkey Kong", "Diddy Kong", "Captain Falcon",
+	                  "Wolf", "Fox", "Falco", "Ice Climbers", "Zelda",
+	                  "Sheik", "Link", "Toon Link", "Ganondorf",
+	                  "Mewtwo", "Lucario", "Pikachu", "Jigglypuff", "Squirtle",
+	                  "Ivysaur", "Charizard", "Samus", "Zero Suit Samus",
+	                  "Lucas", "Ness", "Pit", "Kirby", "Meta Knight",
+	                  "King Dedede", "Ike", "Marth", "Roy", "Olimar",
+	                  "R.O.B.", "Mr. Game and Watch", "Snake", "Sonic"];
+
+	// Lazy solution but i dont fukin kno javascript that well
+	// where the fuck would i be without stack overflow
+	function compareMatchupSpread(a, b) {
+		var answer = prompt("Better MU spread: " + a + " or " + b + " or even?");
+		if (answer === a) {
+			return -1;
+		} else if (answer === b) {
+			return 1;
+		} else if (answer === "even") {
+			return 0;
+		} else {
+			alert("Please enter a valid value");
+			return compareMatchupSpread(a, b);
+		}
+	}
+
+	window.onload = function() {
+		var tierlistDiv = document.getElementById("list");
+		characters.sort(compareMatchupSpread);
+		tierlistDiv.innerHTML = "<h1>Tier List</h1>"
+		characters.forEach(function(el, i, arr) {
+			var paragraph = document.createElement("p");
+			var content = document.createTextNode((i + 1) + ". " + el);
+			paragraph.appendChild(content);
+			tierlistDiv.appendChild(paragraph);
+		});
+	}
+	</script>
+</head>
+<body>
+	<div id="list">
+	</div>
+</body>
+</html>
